@@ -9,19 +9,23 @@ public class EventModel {
     @Id
     private String _id;
     private String eventName;
-    private String eventStart;
-    private String eventEnd;
+    private String eventStartDate;
+    private String eventStartTime;
+    private String eventEndDate;
+    private String eventEndTime;
     private String eventLocation;
     private String eventDescription;
 
     public EventModel() {
     }
 
-    public EventModel(String _id, String eventName, String eventStart, String eventEnd, String eventLocation, String eventDescription) {
+    public EventModel(String _id, String eventName, String eventStartDate, String eventStartTime, String eventEndDate, String eventEndTime, String eventLocation, String eventDescription) {
         this._id = _id;
         this.eventName = eventName;
-        this.eventStart = eventStart;
-        this.eventEnd = eventEnd;
+        this.eventStartDate = eventStartDate;
+        this.eventStartTime = eventStartTime;
+        this.eventEndDate = eventEndDate;
+        this.eventEndTime = eventEndTime;
         this.eventLocation = eventLocation;
         this.eventDescription = eventDescription;
     }
@@ -34,20 +38,36 @@ public class EventModel {
         this.eventName = eventName;
     }
 
-    public String getEventStart() {
-        return eventStart;
+    public String getEventStartDate() {
+        return eventStartDate;
     }
 
-    public void setEventStart(String eventStart) {
-        this.eventStart = eventStart;
+    public void setEventStartDate(String eventStartDate) {
+        this.eventStartDate = eventStartDate;
     }
 
-    public String getEventEnd() {
-        return eventEnd;
+    public String getEventStartTime() {
+        return eventStartTime;
     }
 
-    public void setEventEnd(String eventEnd) {
-        this.eventEnd = eventEnd;
+    public void setEventStartTime(String eventStartTime) {
+        this.eventStartTime = eventStartTime;
+    }
+
+    public String getEventEndDate() {
+        return eventEndDate;
+    }
+
+    public void setEventEndDate(String eventEndDate) {
+        this.eventEndDate = eventEndDate;
+    }
+
+    public String getEventEndTime() {
+        return eventEndTime;
+    }
+
+    public void setEventEndTime(String eventEndTime) {
+        this.eventEndTime = eventEndTime;
     }
 
     public String getEventLocation() {
