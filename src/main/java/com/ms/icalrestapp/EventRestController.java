@@ -27,7 +27,7 @@ public class EventRestController {
 
 
     @RequestMapping(value = "/pass", consumes = "application/json", method = {RequestMethod.GET, RequestMethod.PUT, RequestMethod.POST})
-    public ResponseEntity<EventModel> getEvent(@RequestBody EventModel eventModel) {
+    public ResponseEntity<EventModel> passEvent(@RequestBody EventModel eventModel) {
         eventRepository.save(eventModel);
         return ResponseEntity.status(HttpStatus.OK).body(eventModel);
     }
