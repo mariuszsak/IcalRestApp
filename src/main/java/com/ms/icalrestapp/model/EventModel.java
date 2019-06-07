@@ -3,23 +3,28 @@ package com.ms.icalrestapp.model;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import java.util.List;
+import java.util.Map;
+
 @Document(collection = "events")
 public class EventModel {
 
     @Id
     private String _id;
     private String eventName;
-    private String eventStartDate;
-    private String eventStartTime;
-    private String eventEndDate;
-    private String eventEndTime;
+    //    private String eventStartDate;
+    private CustomDate eventStartDate;
+    private CustomTime eventStartTime;
+    private CustomDate eventEndDate;
+    //    private String eventEndDate;
+    private CustomTime eventEndTime;
     private String eventLocation;
     private String eventDescription;
 
     public EventModel() {
     }
 
-    public EventModel(String _id, String eventName, String eventStartDate, String eventStartTime, String eventEndDate, String eventEndTime, String eventLocation, String eventDescription) {
+    public EventModel(String _id, String eventName, CustomDate eventStartDate, CustomTime eventStartTime, CustomDate eventEndDate, CustomTime eventEndTime, String eventLocation, String eventDescription) {
         this._id = _id;
         this.eventName = eventName;
         this.eventStartDate = eventStartDate;
@@ -30,6 +35,14 @@ public class EventModel {
         this.eventDescription = eventDescription;
     }
 
+    public String get_id() {
+        return _id;
+    }
+
+    public void set_id(String _id) {
+        this._id = _id;
+    }
+
     public String getEventName() {
         return eventName;
     }
@@ -38,35 +51,35 @@ public class EventModel {
         this.eventName = eventName;
     }
 
-    public String getEventStartDate() {
+    public CustomDate getEventStartDate() {
         return eventStartDate;
     }
 
-    public void setEventStartDate(String eventStartDate) {
+    public void setEventStartDate(CustomDate eventStartDate) {
         this.eventStartDate = eventStartDate;
     }
 
-    public String getEventStartTime() {
+    public CustomTime getEventStartTime() {
         return eventStartTime;
     }
 
-    public void setEventStartTime(String eventStartTime) {
+    public void setEventStartTime(CustomTime eventStartTime) {
         this.eventStartTime = eventStartTime;
     }
 
-    public String getEventEndDate() {
+    public CustomDate getEventEndDate() {
         return eventEndDate;
     }
 
-    public void setEventEndDate(String eventEndDate) {
+    public void setEventEndDate(CustomDate eventEndDate) {
         this.eventEndDate = eventEndDate;
     }
 
-    public String getEventEndTime() {
+    public CustomTime getEventEndTime() {
         return eventEndTime;
     }
 
-    public void setEventEndTime(String eventEndTime) {
+    public void setEventEndTime(CustomTime eventEndTime) {
         this.eventEndTime = eventEndTime;
     }
 
