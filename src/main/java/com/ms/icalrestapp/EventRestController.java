@@ -1,8 +1,8 @@
 package com.ms.icalrestapp;
 
 import com.ms.icalrestapp.model.EventModel;
+import com.ms.icalrestapp.model.EventNamesOnly;
 import com.ms.icalrestapp.repository.EventRepository;
-import com.ms.icalrestapp.service.EventService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -25,6 +25,15 @@ public class EventRestController {
         return eventRepository.findAll();
     }
 
+    @GetMapping("/list")
+    public List<EventNamesOnly> list(){
+        return eventRepository.findAllBy();
+    }
+
+    @GetMapping("/detail/{name}")
+    public EventModel showEvent(@PathVariable String name){
+        return eventRepository.findByEventName(name);
+    }
 
     @RequestMapping(value = "/pass", consumes = "application/json", method = {RequestMethod.GET, RequestMethod.PUT, RequestMethod.POST})
     public ResponseEntity<EventModel> passEvent(@RequestBody EventModel eventModel) {
