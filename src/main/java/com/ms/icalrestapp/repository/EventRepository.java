@@ -7,5 +7,4 @@ import java.util.List;
 
 public interface EventRepository extends MongoRepository<EventModel, String> {
     List<EventModel> findAll();
-//    EventModel save();
 }
