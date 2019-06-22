@@ -1,8 +1,10 @@
 package com.ms.icalrestapp;
 
+import com.ms.icalrestapp.model.CustomDate;
 import com.ms.icalrestapp.model.EventModel;
 import com.ms.icalrestapp.model.EventNamesOnly;
 import com.ms.icalrestapp.repository.EventRepository;
+import com.ms.icalrestapp.service.EventService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -16,6 +18,8 @@ import java.util.List;
 @RestController
 public class EventRestController {
 
+    @Autowired
+    EventService eventService;
 
     @Autowired
     EventRepository eventRepository;
@@ -26,12 +30,33 @@ public class EventRestController {
     }
 
     @GetMapping("/list")
-    public List<EventNamesOnly> list(){
+    public List<EventNamesOnly> list() {
         return eventRepository.findAllBy();
     }
 
+    @GetMapping("/list/1")
+    public List<EventModel> showEventsInPeriod1() {
+        return eventService.returnAllEventsToday();
+    }
+
+    @GetMapping("/list/7")
+    public List<EventModel> showEventsInPeriod7() {
+        return eventService.returnAllEventsThisWeek();
+    }
+
+    @GetMapping("/list/30")
+    public List<EventModel> showEventsInPeriod30() {
+        return eventService.returnAllEventsThisMonth();
+    }
+
+    @GetMapping("/list/past")
+    public List<EventModel> showEventsInPast() {
+        return eventService.returnAllPastEvents();
+    }
+
+
     @GetMapping("/detail/{name}")
-    public EventModel showEvent(@PathVariable String name){
+    public EventModel showEvent(@PathVariable String name) {
         return eventRepository.findByEventName(name);
     }
 

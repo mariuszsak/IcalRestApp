@@ -12,11 +12,9 @@ public class EventModel {
     @Id
     private String _id;
     private String eventName;
-    //    private String eventStartDate;
     private CustomDate eventStartDate;
     private CustomTime eventStartTime;
     private CustomDate eventEndDate;
-    //    private String eventEndDate;
     private CustomTime eventEndTime;
     private String eventLocation;
     private String eventDescription;
@@ -97,5 +95,20 @@ public class EventModel {
 
     public void setEventDescription(String eventDescription) {
         this.eventDescription = eventDescription;
+    }
+
+
+    @Override
+    public String toString() {
+        return "EventModel{" +
+                "_id='" + _id + '\'' +
+                ", eventName='" + eventName + '\'' +
+                ", eventStartDate=" + eventStartDate +
+                ", eventStartTime=" + eventStartTime +
+                ", eventEndDate=" + eventEndDate +
+                ", eventEndTime=" + eventEndTime +
+                ", eventLocation='" + eventLocation + '\'' +
+                ", eventDescription='" + eventDescription + '\'' +
+                '}';
     }
 }
