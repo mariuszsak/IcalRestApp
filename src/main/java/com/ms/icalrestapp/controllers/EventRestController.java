@@ -1,6 +1,5 @@
 package com.ms.icalrestapp;
 
-import com.ms.icalrestapp.model.CustomDate;
 import com.ms.icalrestapp.model.EventModel;
 import com.ms.icalrestapp.model.EventNamesOnly;
 import com.ms.icalrestapp.repository.EventRepository;
