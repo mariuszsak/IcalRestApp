@@ -1,4 +1,4 @@
-package com.ms.icalrestapp;
+package com.ms.icalrestapp.controllers;
 
 import com.ms.icalrestapp.model.EventModel;
 import com.ms.icalrestapp.model.EventNamesOnly;
@@ -64,6 +64,4 @@ public class EventRestController {
         eventRepository.save(eventModel);
         return ResponseEntity.status(HttpStatus.OK).body(eventModel);
     }
-
-
 }

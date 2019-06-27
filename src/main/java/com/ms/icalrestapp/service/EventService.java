@@ -3,59 +3,49 @@ package com.ms.icalrestapp.service;
 import com.ms.icalrestapp.model.CustomDate;
 import com.ms.icalrestapp.model.EventModel;
 import com.ms.icalrestapp.repository.EventRepository;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
 import java.util.List;
 
 @Service
 public class EventService {
 
+    private final DateService dateService = new DateService();
     @Autowired
     EventRepository eventRepository;
 
 
     private CustomDate today() {
-        String date = LocalDate.now().format(DateTimeFormatter.ofPattern("dd/MM/yyyy"));
-        return dateParser(date);
+        return dateService.today();
     }
 
     private CustomDate nextWeek() {
-        String date = LocalDate.now().plusWeeks(1).format(DateTimeFormatter.ofPattern("dd/MM/yyyy"));
-        return dateParser(date);
+        return dateService.nextWeek();
     }
 
     private CustomDate nextMonth() {
-        String date = LocalDate.now().plusMonths(1).format(DateTimeFormatter.ofPattern("dd/MM/yyyy"));
-        return dateParser(date);
+        return dateService.nextMonth();
     }
 
     private CustomDate dateParser(String date) {
-        String day = date.substring(0, 2);
-        String month = date.substring(3, 5);
-        String year = date.substring(6, 10);
-        return new CustomDate(year, month, day);
+        return dateService.dateParser(date);
     }
 
     public List<EventModel> returnAllEventsToday() {
-        return eventRepository.findAllByEventStartDate(today());
+        return eventRepository.findAllByEventStartDate(dateService.today());
     }
 
 
     public List<EventModel> returnAllEventsThisWeek() {
-        return eventRepository.findAllByEventStartDateBetween(today(), nextWeek());
+        return eventRepository.findAllByEventStartDateBetween(dateService.today(), dateService.nextWeek());
     }
 
     public List<EventModel> returnAllEventsThisMonth() {
-        return eventRepository.findAllByEventStartDateBetween(today(), nextMonth());
+        return eventRepository.findAllByEventStartDateBetween(dateService.today(), dateService.nextMonth());
     }
 
     public List<EventModel> returnAllPastEvents() {
-        return eventRepository.findAllByEventStartDateIsLessThan(today());
+        return eventRepository.findAllByEventStartDateIsLessThan(dateService.today());
     }
 }
