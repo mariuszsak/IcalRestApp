@@ -12,5 +12,8 @@ Simple application for creating and finding events.
 - MongoDB
 - Junit
 
+### Todo
+- tests for services and controllers
+
 
 
