@@ -40,7 +40,7 @@ public class CustomDate {
 
     @Override
     public String toString() {
-        return "{" +
+        return "CustomDate{" +
                 "year='" + year + '\'' +
                 ", month='" + month + '\'' +
                 ", day='" + day + '\'' +
